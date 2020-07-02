@@ -1,38 +1,63 @@
 <template>
     <Page>
         <ActionBar title="Welcome to NativeScript-Vue!" />
-        <GridLayout
-                columns="*"
-                rows="*"
-        >
+        <StackLayout orientation="vertical" verticalAlignment="center" >
             <Label
                     class="message"
                     :text="msg"
                     col="0"
                     row="0"
             />
+            <Label
+                    fontSize="22"
+                    class="mt-5 text-green-500 text-center"
+                    text="Tap Me"
+                    @tap="message"
+            />
             <Button
                     text="Create an order"
                     @tap="onCreateOrder"
             />
-        </GridLayout>
+            <Button
+                    text="Logout"
+                    @tap="logout"
+                    class="mt-5 bg-red-400"
+            />
+        </StackLayout>
     </Page>
 </template>
 
 <script>
-    import createOrder from "../Orders/CreateOrder.vue";
     export default {
         data() {
             return {
                 msg: "Hello World!"
             };
         },
-        components: {
-            createOrder
+        mounted() {
+            this.checkAuth()
         },
         methods: {
             async onCreateOrder() {
-                this.$navigateTo(createOrder);
+                this.$navigator.navigate('/order')
+            },
+            message(){
+                this.$feedback.success({
+                    title: 'Success',
+                    message: "I'm an OK message",
+                });
+            },
+            checkAuth() {
+                if(this.$navigator.route.meta.needsAuth) {
+                    this.$navigator.navigate('/login', { clearHistory: true })
+                }
+            },
+            logout(){
+                const vm = this
+                this.$store.dispatch('logoutUser').then(_fn => {
+                    vm.$navigator.navigate('/login', { clearHistory: true })
+                })
+
             }
         }
     };

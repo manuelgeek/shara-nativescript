@@ -7,6 +7,14 @@ if(TNS_ENV !== 'production') {
   Vue.use(VueDevtools)
 }
 import store from './store'
+import axios from 'axios'
+global.axios = axios;
+import { initializer } from './plugins/axios';
+initializer(store);
+
+import { Feedback } from 'nativescript-feedback';
+Vue.prototype.$feedback = new Feedback();
+
 import Navigator from 'nativescript-vue-navigator';
 import { routes } from './router';
 Vue.use(Navigator, { routes });
