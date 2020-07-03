@@ -87,9 +87,6 @@
                                 })
                         }
                     }
-                    console.log(result.text === null)
-                    console.log(result.text === '')
-                    // console.log(`Dialog result: ${result.result}, text: ${result.text}`)
                 });
             },
             onItemTap: function (args) {

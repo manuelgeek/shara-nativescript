@@ -70,7 +70,7 @@
             // },
             fabTap() {
                 prompt({
-                    title: "Create Order",
+                    title: "Create Order Product",
                     message: "Product name, Price, uom",
                     okButtonText: "Create",
                     cancelButtonText: "Cancel",
@@ -101,8 +101,6 @@
                             }
                         }
                     }
-                    // console.log(result.text === null)
-                    // console.log(`Dialog result: ${result.result}, text: ${result.text}`)
                 });
             },
         },
