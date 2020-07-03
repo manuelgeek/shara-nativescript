@@ -48,7 +48,7 @@
                 });
             },
             checkAuth() {
-                if(this.$navigator.route.meta.needsAuth) {
+                if(!this.$store.getters.isLoggedIn) {
                     this.$navigator.navigate('/login', { clearHistory: true })
                 }
             },
