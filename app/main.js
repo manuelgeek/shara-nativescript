@@ -14,6 +14,14 @@ initializer(store);
 
 import { Feedback } from 'nativescript-feedback';
 Vue.prototype.$feedback = new Feedback();
+Vue.registerElement(
+    'PullToRefresh',
+    () => require('@nstudio/nativescript-pulltorefresh').PullToRefresh
+);
+Vue.registerElement(
+    'Fab',
+    () => require('nativescript-floatingactionbutton').Fab
+);
 
 import Navigator from 'nativescript-vue-navigator';
 import { routes } from './router';

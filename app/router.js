@@ -1,7 +1,7 @@
 import Home from '~/components/Pages/Home';
+import Order from '~/components/Pages/Order';
 import Login from '~/components/Pages/Auth/Login';
 import Register from '~/components/Pages/Auth/Register';
-import CreateOrder from "./components/Orders/CreateOrder";
 
 export const routes = {
     '/home': {
@@ -9,7 +9,7 @@ export const routes = {
         meta: { needsAuth: true }
     },
     '/order': {
-        component: CreateOrder,
+        component: Order,
         meta: { needsAuth: true }
     },
     '/register': {

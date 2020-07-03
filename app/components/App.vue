@@ -16,10 +16,16 @@
             this.$navigator.navigate('/login', { clearHistory: true })
           }
           if (error.response.status === 500 || error.response.status === 502) {
-            // error page
+            this.$feedback.error({
+              title: 'Error',
+              message: 'AN Internal Error occurred',
+            });
           }
           if (error.response.status === 404) {
-            // 404 page
+            this.$feedback.error({
+              title: 'Error',
+              message: 'Resource not found',
+            });
           }
           // console.log(error.response)
         } else if (error.request) {
